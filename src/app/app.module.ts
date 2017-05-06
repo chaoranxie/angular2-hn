@@ -7,6 +7,11 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { ServicesModule } from './shared/services/services.module';
 
+import {
+  LocationStrategy,
+  HashLocationStrategy
+} from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -17,7 +22,9 @@ import { ServicesModule } from './shared/services/services.module';
     ServicesModule.forRoot(),
     CoreModule
   ],
-  providers: [ ],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
